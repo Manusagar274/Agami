@@ -39,7 +39,7 @@ export function Header() {
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link href="/" aria-label="Agami by Haritha home" className="shrink-0">
+        <Link href="/" aria-label="Agami by Haritha home" className="flex shrink-0 items-center gap-3">
           <Image
             src="/brand/agami-logo-mark.webp"
             alt="Agami by Haritha"
@@ -51,6 +51,14 @@ export function Header() {
               scrolled ? "h-12" : "h-16"
             )}
           />
+          <span
+            className={cn(
+              "font-display italic text-olive transition-all duration-300",
+              scrolled ? "text-2xl" : "text-3xl"
+            )}
+          >
+            Agami
+          </span>
         </Link>
 
         <nav aria-label="Primary" className="hidden md:flex items-center gap-8 font-sans text-sm tracking-wide uppercase">

@@ -125,6 +125,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <p className="font-sans text-xs text-brown/50 mt-3">
               We typically respond within a few hours. Availability is confirmed over WhatsApp.
             </p>
+            <p className="font-sans text-xs text-brown/50 mt-1">
+              All sales are final. We are happy to offer an exchange, though refunds are not available.
+            </p>
           </div>
         </div>
       </div>
