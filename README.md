@@ -125,24 +125,39 @@ npm run dev
 
 ## Replacing demo images
 
-Nothing in `public/images/placeholders` is real product photography — they're generated SVG
-placeholders (warm gradients + a caption naming exactly what should go there, e.g. "Replace —
-Hero Photograph"). To swap them:
+`public/images/photos/` holds the real product photography currently in use (compressed WebP,
+see "Adding/updating photos" below). Nothing here is a generated placeholder anymore — but the
+photo↔slot assignments are provisional (real photos mapped to hero/category/story/product roles
+without necessarily matching product content one-to-one). To refine them:
 
-- **Product images**: in the admin, open a product and replace each image URL with a real,
-  publicly-accessible image URL (see "Image hosting" below). The starred image is primary.
-- **Hero / category / story imagery**: replace the files referenced in
+- **Product images**: in the admin, open a product and replace each image URL with the exact
+  photo you want (see "Image hosting" below). The starred image is primary.
+- **Hero / category / story imagery**: edit the paths referenced in
   `app/(public)/page.tsx`, `app/(public)/story/page.tsx`, and `app/(public)/contact/page.tsx`
-  (search for `/images/placeholders/`), or drop replacement files into `public/images/` and
-  update the `src` paths.
+  (search for `/images/photos/`).
 - **Logo & brand marks**: `public/brand/*.svg` were recreated from the brand's colour palette and
   described visual language, since no logo file was provided during this build. If you have the
   actual Agami logo file, replace `agami-logo.svg`, `agami-logo-dark.svg`, `agami-monogram.svg`
   and `agami-wordmark.svg`, and update `components/brand/Logo.tsx` / `Monogram.tsx` if the new
   logo's proportions differ.
-- **OG / social share image**: `public/images/og-default.svg` — most social platforms expect a
-  JPG/PNG for link previews, so export a 1200×630 PNG/JPG version and update `ogImage` in
-  `lib/config/site.ts`.
+- **OG / social share image**: `public/images/og-default.jpg` (1200×630 JPG) — regenerate via
+  `scripts/process-photos.sh` if you want a different source photo, and update `ogImage` in
+  `lib/config/site.ts` if you change the filename.
+
+### Adding/updating photos
+
+Drop new source photos into `public/Other images/` or `public/Cover image/` (both gitignored —
+never committed as raw originals), update the file mapping at the top of
+`scripts/process-photos.sh`, then run:
+
+```bash
+npm run photos:process        # resizes (longest side 1600px) + converts to WebP @ q78
+npm run db:update-images      # repoints existing seeded products at the new files (local DB)
+```
+
+To apply the same product-image update against production (where `DATABASE_URL` can't be pulled
+locally — see "Tech notes"), set `RUN_IMAGE_UPDATE=true` as a Production environment variable in
+Vercel, push/redeploy once, then remove the variable.
 
 ## Image hosting
 
@@ -193,3 +208,15 @@ The number is never hard-coded — it always comes from `NEXT_PUBLIC_WHATSAPP_NU
   action as defense-in-depth. Passwords are hashed with `bcryptjs`.
 - **No cart/checkout**: intentionally absent — the catalogue exists purely to drive WhatsApp
   enquiries.
+- **Production env vars are write-only**: Vercel stores env vars (including Neon's
+  auto-injected `DATABASE_URL`) as "sensitive" by default — they inject fine at build/runtime but
+  can't be pulled back down locally (`vercel env pull` returns empty values for them). Because of
+  this, `npm run vercel-build` (see `package.json`) runs `drizzle-kit migrate` on every deploy, and
+  can conditionally run the one-off `db:seed` / `db:update-images` scripts when `RUN_SEED` /
+  `RUN_IMAGE_UPDATE` are set to `"true"` in Vercel — set the flag, redeploy once, then remove it.
+- **Vercel project settings that matter**: Framework Preset must be **Next.js** (if a project was
+  ever created/imported with it set to "Other", every route 404s — the build succeeds but Vercel
+  serves it as a static site from `public/`, ignoring the Next.js server build entirely). Also
+  worth knowing: Vercel's Deployment Protection (SSO wall) defaults to *on* for non-custom-domain
+  URLs on new projects — disable it (`vercel project protection disable <project> --sso`) if the
+  `*.vercel.app` URL should be publicly visible.
