@@ -7,11 +7,21 @@ import { ProductGrid } from "@/components/product/ProductGrid";
 import { getProducts } from "@/lib/db/queries";
 import type { ProductCategory } from "@/types/product";
 import { CATEGORY_LABEL } from "@/types/product";
+import { siteConfig } from "@/lib/config/site";
+
+const title = "Collection";
+const description =
+  "Browse the full Agami by Haritha catalogue of fancy jewellery — earrings, necklaces, bangles, rings and sets.";
 
 export const metadata: Metadata = {
-  title: "Collection",
-  description: "Browse the full Agami by Haritha catalogue of fancy jewellery — earrings, necklaces, bangles, rings and sets.",
+  title,
+  description,
   alternates: { canonical: "/collection" },
+  openGraph: {
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: `${siteConfig.url}/collection`,
+  },
 };
 
 const VALID_CATEGORIES: ProductCategory[] = ["earrings", "necklaces", "bangles", "rings", "sets", "other"];

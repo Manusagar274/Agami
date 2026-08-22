@@ -6,11 +6,22 @@ import { StorySection } from "@/components/story/StorySection";
 import { PullQuote } from "@/components/story/PullQuote";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/lib/config/site";
+
+const title = "Our Story";
+const description =
+  "The story behind Agami by Haritha — Indian craftsmanship, personal style, and jewellery made to be worn and loved.";
 
 export const metadata: Metadata = {
-  title: "Our Story",
-  description: "The story behind Agami by Haritha — Indian craftsmanship, personal style, and jewellery made to be worn and loved.",
+  title,
+  description,
   alternates: { canonical: "/story" },
+  openGraph: {
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: `${siteConfig.url}/story`,
+    images: [{ url: "/images/photos/story-cover.webp", width: 1600, height: 900, alt: title }],
+  },
 };
 
 export default function StoryPage() {

@@ -8,10 +8,19 @@ import { EnquiryButton } from "@/components/whatsapp/EnquiryButton";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 import { siteConfig } from "@/lib/config/site";
 
+const title = "Contact";
+const description =
+  "Get in touch with Agami by Haritha on WhatsApp or Instagram for enquiries about our jewellery collection.";
+
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with Agami by Haritha on WhatsApp or Instagram for enquiries about our jewellery collection.",
+  title,
+  description,
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: `${title} | ${siteConfig.name}`,
+    description,
+    url: `${siteConfig.url}/contact`,
+  },
 };
 
 export default function ContactPage() {

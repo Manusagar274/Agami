@@ -8,7 +8,7 @@ import { EnquiryButton } from "@/components/whatsapp/EnquiryButton";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 import { getProductBySlug } from "@/lib/db/queries";
 import { CATEGORY_LABEL } from "@/types/product";
-import { formatPrice } from "@/lib/utils";
+import { absoluteUrl, formatPrice } from "@/lib/utils";
 import { siteConfig } from "@/lib/config/site";
 
 export const revalidate = 60;
@@ -52,18 +52,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const productUrl = `${siteConfig.url}/collection/${product.slug}`;
 
-  const structuredData = {
+  const oneYearFromNow = new Date();
+  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+
+  const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.shortDescription || product.description || undefined,
     sku: product.sku,
     category: CATEGORY_LABEL[product.category],
-    image: product.images.map((img) => img.imageUrl),
+    image: product.images.map((img) => absoluteUrl(img.imageUrl, siteConfig.url)),
+    brand: { "@type": "Brand", name: siteConfig.name },
     offers: {
       "@type": "Offer",
       priceCurrency: product.currency,
       price: product.price ?? undefined,
+      priceValidUntil: oneYearFromNow.toISOString().slice(0, 10),
       availability:
         product.availability === "in_stock"
           ? "https://schema.org/InStock"
@@ -74,9 +79,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Collection", item: `${siteConfig.url}/collection` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: CATEGORY_LABEL[product.category],
+        item: `${siteConfig.url}/collection?category=${product.category}`,
+      },
+      { "@type": "ListItem", position: 4, name: product.name, item: productUrl },
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       <Breadcrumbs
         items={[

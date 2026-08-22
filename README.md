@@ -189,19 +189,52 @@ product name, SKU and URL to pre-fill a message like:
 
 The number is never hard-coded — it always comes from `NEXT_PUBLIC_WHATSAPP_NUMBER`.
 
+## SEO
+
+What's already in place, on every page:
+
+- Unique, descriptive `<title>` and meta description per page (homepage, collection, every
+  product, story, contact), with per-page OpenGraph tags so social/WhatsApp link previews show
+  the right title, description and image instead of falling back to the homepage's.
+- `app/sitemap.ts` — auto-generated, includes every published product; `app/robots.ts` — allows
+  crawling of the public site, blocks `/admin` and `/api`, and points crawlers at the sitemap.
+- Structured data (JSON-LD): `Organization` + `WebSite` (with a sitelinks search action) on every
+  page via the root layout, plus `Product` and `BreadcrumbList` on each product page.
+- A real favicon/app icon (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) generated
+  from the brand logo — this is what shows next to the site in Google search results and browser
+  tabs, not a placeholder.
+- Semantic HTML, alt text on all images, and canonical URLs on every page (prevents duplicate-
+  content issues from query strings, trailing slashes, etc.).
+
+**What only you can do** (these need your own Google account — I can't act on your behalf here):
+
+1. **Google Search Console** — go to [search.google.com/search-console](https://search.google.com/search-console),
+   add `agamibyharitha.com` as a property, and verify ownership. The easiest method for this
+   project: choose the "HTML tag" verification option, copy just the `content="..."` value, and
+   set it as `GOOGLE_SITE_VERIFICATION` in Vercel's environment variables (Production) — then
+   redeploy and click "Verify" in Search Console.
+2. **Submit the sitemap** — in Search Console, under Sitemaps, submit `sitemap.xml`
+   (`https://www.agamibyharitha.com/sitemap.xml`). This is what tells Google every product page
+   exists, rather than waiting for it to discover them by chance.
+3. **Request indexing** — for the homepage at minimum, use Search Console's URL Inspection tool
+   to request indexing directly rather than waiting for Google's next crawl.
+4. Indexing itself usually takes anywhere from a few days to a few weeks — Search Console will
+   show you the status once submitted. Structured data can be spot-checked with
+   [Google's Rich Results Test](https://search.google.com/test/rich-results).
+
 ## What I need to configure before production
 
-- [ ] **`DATABASE_URL`** — a real, production Postgres connection string.
-- [ ] **`AUTH_SECRET`** — a freshly generated random secret (don't reuse the local dev one).
-- [ ] **`ADMIN_EMAIL` / `ADMIN_PASSWORD`** — set before running `db:seed` against production; change
-      the password afterwards if you'd like a different one than what was seeded.
-- [ ] **`NEXT_PUBLIC_WHATSAPP_NUMBER`** — the real WhatsApp Business number that should receive
-      enquiries.
-- [ ] **`NEXT_PUBLIC_SITE_URL`** — the production domain, used in metadata, OpenGraph and the sitemap.
-- [ ] **Image storage** — decide whether to use Vercel Blob (`BLOB_READ_WRITE_TOKEN`) or another
-      provider for product photography, and replace the demo images.
-- [ ] **Social links** — `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_CONTACT_EMAIL` in the environment,
-      plus the real logo files described above.
+- [x] **`DATABASE_URL`** — Neon Postgres, connected via the Vercel integration.
+- [x] **`AUTH_SECRET`** — a freshly generated production secret (not the local dev one).
+- [x] **`ADMIN_EMAIL` / `ADMIN_PASSWORD`** — seeded against production.
+- [x] **`NEXT_PUBLIC_WHATSAPP_NUMBER`** — set to the real WhatsApp Business number.
+- [x] **`NEXT_PUBLIC_SITE_URL`** — set to `https://www.agamibyharitha.com`.
+- [x] **Image storage** — Vercel Blob (`BLOB_READ_WRITE_TOKEN`), with direct browser-to-Blob
+      uploads from the admin.
+- [x] **Social links** — `NEXT_PUBLIC_INSTAGRAM_URL` set to the real Instagram
+      ([@agamiofficial](https://www.instagram.com/agamiofficial/)); real logo in place.
+- [ ] **`GOOGLE_SITE_VERIFICATION`** — needed to verify the site in Google Search Console and get
+      it indexed (see "SEO" above) — this one needs your own Google account.
 
 ## Tech notes
 
