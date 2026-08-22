@@ -1,0 +1,22 @@
+<svg width="1000" height="1250" viewBox="0 0 1000 1250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Close-up of hands setting Kundan stones">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4A017"/>
+      <stop offset="100%" stop-color="#A85B3A"/>
+    </linearGradient>
+    <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#292A1F" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1250" fill="url(#bg)"/>
+  <rect width="1000" height="1250" fill="url(#dots)"/>
+  <rect x="16" y="16" width="968" height="1218" fill="none" stroke="#D4A017" stroke-width="1" opacity="0.5"/>
+  
+    <g transform="translate(500, 400)" opacity="0.9">
+      <circle r="46" fill="none" stroke="#D4A017" stroke-width="1.2"/>
+      <circle r="38" fill="none" stroke="#D4A017" stroke-width="0.6" opacity="0.6"/>
+      <path d="M0 -24 L18 24 M0 -24 L-18 24 M-11 12 H11" stroke="#292A1F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+  <text x="50%" y="625" text-anchor="middle" font-family="Georgia, 'Cormorant Garamond', serif" font-style="italic" font-size="17" fill="#3B332B">Close-up of hands setting Kundan stones</text>
+  <text x="50%" y="1222" text-anchor="middle" font-family="'DM Sans', Helvetica, Arial, sans-serif" font-size="10" letter-spacing="2" fill="#A85B3A">REPLACE — CRAFTSMANSHIP</text>
+</svg>
