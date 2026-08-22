@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Logo } from "@/components/brand/Logo";
 import { EnquiryButton } from "@/components/whatsapp/EnquiryButton";
 import { siteConfig } from "@/lib/config/site";
 import { cn } from "@/lib/utils";
@@ -40,7 +40,17 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <Link href="/" aria-label="Agami by Haritha home" className="shrink-0">
-          <Logo size={scrolled ? "sm" : "md"} className="transition-all duration-300" />
+          <Image
+            src="/brand/agami-logo-mark.webp"
+            alt="Agami by Haritha"
+            width={160}
+            height={160}
+            priority
+            className={cn(
+              "w-auto transition-all duration-300",
+              scrolled ? "h-12" : "h-16"
+            )}
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden md:flex items-center gap-8 font-sans text-sm tracking-wide uppercase">
