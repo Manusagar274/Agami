@@ -130,8 +130,8 @@ see "Adding/updating photos" below). Nothing here is a generated placeholder any
 photo↔slot assignments are provisional (real photos mapped to hero/category/story/product roles
 without necessarily matching product content one-to-one). To refine them:
 
-- **Product images**: in the admin, open a product and replace each image URL with the exact
-  photo you want (see "Image hosting" below). The starred image is primary.
+- **Product images**: in the admin, open a product and upload the exact photo you want for each
+  slot (see "Image hosting" below). The starred image is the cover photo.
 - **Hero / category / story imagery**: edit the paths referenced in
   `app/(public)/page.tsx`, `app/(public)/story/page.tsx`, and `app/(public)/contact/page.tsx`
   (search for `/images/photos/`).
@@ -164,12 +164,16 @@ Vercel, push/redeploy once, then remove the variable.
 Product images are always stored as **URLs** in Postgres, never as binary data. `lib/storage/index.ts`
 is the single abstraction point for turning an upload into a URL:
 
-- **Today**: paste any public image URL directly into the admin product form.
-- **Vercel Blob**: set `BLOB_READ_WRITE_TOKEN` (from the Vercel Blob integration) and
-  `uploadProductImage()` in `lib/storage/index.ts` will use it — wire up a file input in
-  `AdminProductForm` to call it via a server action when you're ready.
+- **Default**: the admin product form uploads directly to **Vercel Blob** (via
+  `uploadProductImageAction` → `uploadProductImage()` in `lib/storage/index.ts`) — set
+  `BLOB_READ_WRITE_TOKEN` (auto-added if you create a Blob store from the Vercel dashboard's
+  Storage tab, or run `vercel blob create-store <name> --access public`). Each image slot also
+  has a "paste an image URL" fallback for anything already hosted elsewhere.
 - **Cloudinary / S3**: implement the same `uploadProductImage(file): Promise<{ url }>` contract in
   `lib/storage/index.ts` — nothing else in the app needs to change.
+- If you swap in a different provider/CDN, add its hostname to `images.remotePatterns` in
+  `next.config.ts` so `next/image` can optimize it on the public site (product cards, gallery,
+  detail pages).
 
 ## WhatsApp enquiries
 

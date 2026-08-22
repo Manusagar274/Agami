@@ -8,6 +8,13 @@
       "when": 1787421669799,
       "tag": "0000_many_tiger_shark",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1787428589740,
+      "tag": "0001_windy_the_professor",
+      "breakpoints": true
     }
   ]
 }

@@ -89,7 +89,7 @@ export function ProductsTable({ products }: { products: Product[] }) {
                   </form>
                 </td>
                 <td className="px-4 py-3 text-brown/60">
-                  {new Date(product.updatedAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
+                  {new Date(product.updatedAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short" })}
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-end gap-3">

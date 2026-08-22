@@ -8,6 +8,7 @@ import { slugify } from "@/lib/products/validation";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types/product";
 import type { ProductFormState } from "@/lib/products/actions";
+import { ImageUploadField } from "./ImageUploadField";
 
 type AdminProductFormProps = {
   product?: Product;
@@ -172,11 +173,11 @@ export function AdminProductForm({ product, action, submitLabel = "Save Product"
       <fieldset className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <legend className="col-span-full font-display text-xl text-olive mb-2">Pricing &amp; Availability</legend>
 
-        <Field label="Price (INR)" htmlFor={`${idBase}-price`} hint="Leave blank to show enquiry-only pricing.">
+        <Field label="Price (GBP)" htmlFor={`${idBase}-price`} hint="Leave blank to show enquiry-only pricing.">
           <input id={`${idBase}-price`} name="price" type="number" min="0" step="1" defaultValue={product?.price ?? ""} className={inputClass} />
         </Field>
 
-        <Field label="Price Display Text" htmlFor={`${idBase}-priceLabel`} hint='e.g. "Enquire for Price" or "Starting at ₹4,500"'>
+        <Field label="Price Display Text" htmlFor={`${idBase}-priceLabel`} hint='e.g. "Enquire for Price" or "Starting at £45"'>
           <input id={`${idBase}-priceLabel`} name="priceLabel" defaultValue={product?.priceLabel ?? ""} className={inputClass} />
         </Field>
 
@@ -229,41 +230,62 @@ export function AdminProductForm({ product, action, submitLabel = "Save Product"
       <fieldset className="flex flex-col gap-4">
         <legend className="font-display text-xl text-olive mb-2">Images</legend>
         <p className="font-sans text-xs text-brown/60 -mt-2">
-          Paste image URLs (e.g. from Vercel Blob, Cloudinary, or any public image host). The starred image is the
-          primary photo shown on cards and as the first gallery image.
+          Upload photos directly, or paste an image URL if you already have one hosted elsewhere. The starred
+          image is the cover photo shown on product cards and first in the gallery.
         </p>
 
         <div className="flex flex-col gap-3">
           {images.map((image, index) => (
-            <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border border-sand/50 p-3">
-              <button
-                type="button"
-                onClick={() => setPrimaryIndex(index)}
-                aria-label={index === primaryIndex ? "Primary image" : "Set as primary image"}
-                aria-pressed={index === primaryIndex}
-                className={cn("shrink-0", index === primaryIndex ? "text-gold" : "text-brown/30 hover:text-gold")}
-              >
-                <Star className="h-4 w-4" fill={index === primaryIndex ? "currentColor" : "none"} />
-              </button>
+            <div key={index} className="flex flex-col sm:flex-row gap-3 border border-sand/50 p-3">
+              <div className="relative h-28 w-24 shrink-0 overflow-hidden bg-sand/20">
+                {image.url ? (
+                  // Plain <img>: admin can paste any external URL, so this preview can't rely
+                  // on next/image's remote-hostname allowlist.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={image.url} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                ) : (
+                  <div className="flex h-full items-center justify-center font-sans text-[0.6rem] text-brown/40">
+                    No image
+                  </div>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setPrimaryIndex(index)}
+                  aria-label={index === primaryIndex ? "Cover image" : "Set as cover image"}
+                  aria-pressed={index === primaryIndex}
+                  className={cn(
+                    "absolute top-1 left-1 rounded-full bg-ivory/90 p-1",
+                    index === primaryIndex ? "text-gold" : "text-brown/40 hover:text-gold"
+                  )}
+                >
+                  <Star className="h-3.5 w-3.5" fill={index === primaryIndex ? "currentColor" : "none"} />
+                </button>
+              </div>
 
-              <input
-                type="url"
-                name="imageUrl"
-                required
-                value={image.url}
-                onChange={(e) => updateImage(index, { url: e.target.value })}
-                placeholder="https://..."
-                className={cn(inputClass, "flex-1")}
-              />
-              <input
-                type="text"
-                value={image.altText}
-                onChange={(e) => updateImage(index, { altText: e.target.value })}
-                placeholder="Alt text"
-                className={cn(inputClass, "sm:w-48")}
-              />
+              <div className="flex flex-1 flex-col gap-2">
+                <div className="flex flex-wrap items-center gap-3">
+                  <ImageUploadField onUploaded={(url) => updateImage(index, { url })} />
+                  <span className="font-sans text-xs text-brown/40">or</span>
+                  <input
+                    type="url"
+                    name="imageUrl"
+                    required
+                    value={image.url}
+                    onChange={(e) => updateImage(index, { url: e.target.value })}
+                    placeholder="Paste an image URL"
+                    className={cn(inputClass, "flex-1 min-w-[10rem]")}
+                  />
+                </div>
+                <input
+                  type="text"
+                  value={image.altText}
+                  onChange={(e) => updateImage(index, { altText: e.target.value })}
+                  placeholder="Alt text (describes the photo)"
+                  className={inputClass}
+                />
+              </div>
 
-              <div className="flex items-center gap-1 shrink-0">
+              <div className="flex sm:flex-col items-center gap-1 shrink-0 self-start">
                 <button type="button" onClick={() => moveImage(index, -1)} aria-label="Move image up" className="p-1.5 text-brown/50 hover:text-olive disabled:opacity-30" disabled={index === 0}>
                   <ArrowUp className="h-4 w-4" />
                 </button>
@@ -285,7 +307,7 @@ export function AdminProductForm({ product, action, submitLabel = "Save Product"
           onClick={addImage}
           className="self-start border border-olive px-4 py-2 font-sans text-xs uppercase tracking-wide text-olive hover:bg-olive hover:text-ivory transition-colors"
         >
-          + Add Image URL
+          + Add Another Image
         </button>
       </fieldset>
 

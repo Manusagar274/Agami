@@ -23,7 +23,7 @@ export default async function EditProductPage({ params }: EditProductPageProps) 
     <div>
       <AdminHeader
         title={product.name}
-        description={`SKU ${product.sku} · Last updated ${new Date(product.updatedAt).toLocaleDateString("en-IN")}`}
+        description={`SKU ${product.sku} · Last updated ${new Date(product.updatedAt).toLocaleDateString("en-GB")}`}
         actions={
           product.status === "published" ? (
             <Link

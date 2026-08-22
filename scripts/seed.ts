@@ -49,7 +49,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Timeless Kundan-inspired jhumkas with delicate drops.",
     description:
       "A timeless pair of Kundan-inspired jhumkas detailed with delicate drops, created for festive occasions and elegant everyday styling.",
-    price: 2450,
+    price: 25,
     priceLabel: null,
     material: "Kundan, Alloy",
     finish: "Antique Gold",
@@ -68,7 +68,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Elegant emerald-tone drops for evening wear.",
     description:
       "Emerald-hued stone drops set in a warm gold finish, designed to catch the light with every movement — a graceful choice for evening occasions.",
-    price: 1850,
+    price: 18,
     priceLabel: null,
     material: "Alloy, Glass Stones",
     finish: "Gold Plated",
@@ -106,7 +106,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Classic temple-motif necklace for bridal styling.",
     description:
       "Inspired by South Indian temple architecture, this necklace layers intricate goddess motifs with a rich antique gold finish — perfect for bridal and festive wear.",
-    price: 4200,
+    price: 40,
     priceLabel: null,
     material: "Alloy, Kundan",
     finish: "Antique Gold",
@@ -125,7 +125,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Delicate pearl choker for understated elegance.",
     description:
       "A dainty pearl choker that layers beautifully with sarees and lehengas alike — understated, versatile, and effortlessly elegant.",
-    price: 1650,
+    price: 16,
     priceLabel: null,
     material: "Shell Pearls, Alloy",
     finish: "Rhodium",
@@ -163,7 +163,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Set of antique-finish bangles with etched detailing.",
     description:
       "A set of antique-finish bangles featuring etched traditional detailing — designed to be stacked or worn individually.",
-    price: 2100,
+    price: 20,
     priceLabel: null,
     material: "Alloy",
     finish: "Antique Gold",
@@ -182,7 +182,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Colourful enamel-work bangles inspired by Rajasthan.",
     description:
       "Vivid enamel (meenakari) work bangles inspired by Rajasthani craftsmanship — a pop of colour for festive dressing.",
-    price: 1950,
+    price: 19,
     priceLabel: null,
     material: "Alloy, Enamel",
     finish: "Gold Plated",
@@ -201,7 +201,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Statement Kundan cocktail ring with adjustable band.",
     description:
       "An eye-catching Kundan cocktail ring on an adjustable band — designed to be the finishing touch on a festive outfit.",
-    price: 1450,
+    price: 14,
     priceLabel: null,
     material: "Kundan, Alloy",
     finish: "Antique Gold",
@@ -239,7 +239,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Polki-inspired choker set with matching earrings.",
     description:
       "A Polki-inspired choker and earring set with a raw, uncut-diamond look — a refined choice for receptions and festive evenings.",
-    price: 3800,
+    price: 36,
     priceLabel: null,
     material: "Polki-style Stones, Alloy",
     finish: "Antique Gold",
@@ -258,7 +258,7 @@ export const PRODUCTS: SeedProduct[] = [
     shortDescription: "Classic gold-finish maang tikka for festive styling.",
     description:
       "A classic maang tikka with an adjustable chain, designed to complement both traditional and fusion festive looks.",
-    price: 950,
+    price: 9,
     priceLabel: null,
     material: "Alloy",
     finish: "Antique Gold",
@@ -307,7 +307,7 @@ async function main() {
         category: product.category,
         price: product.price != null ? String(product.price) : null,
         priceLabel: product.priceLabel,
-        currency: "INR",
+        currency: "GBP",
         material: product.material,
         finish: product.finish,
         color: product.color,

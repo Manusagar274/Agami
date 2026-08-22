@@ -47,7 +47,7 @@ export const products = pgTable(
     category: productCategoryEnum("category").notNull().default("other"),
     price: numeric("price", { precision: 10, scale: 2 }),
     priceLabel: text("price_label"),
-    currency: text("currency").notNull().default("INR"),
+    currency: text("currency").notNull().default("GBP"),
     material: text("material"),
     finish: text("finish"),
     color: text("color"),

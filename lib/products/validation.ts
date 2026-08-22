@@ -22,7 +22,7 @@ export const productFormSchema = z.object({
     .union([z.string().trim().length(0), z.coerce.number().nonnegative()])
     .optional(),
   priceLabel: z.string().trim().max(80).optional().or(z.literal("")),
-  currency: z.string().trim().default("INR"),
+  currency: z.string().trim().default("GBP"),
   material: z.string().trim().optional().or(z.literal("")),
   finish: z.string().trim().optional().or(z.literal("")),
   color: z.string().trim().optional().or(z.literal("")),

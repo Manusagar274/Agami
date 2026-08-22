@@ -12,8 +12,33 @@ import {
   updateProduct,
   type ProductInput,
 } from "@/lib/db/queries";
+import { uploadProductImage } from "@/lib/storage";
 import { productFormSchema, slugify } from "./validation";
 import type { ProductCategory } from "@/types/product";
+
+export type UploadImageState = {
+  url?: string;
+  error?: string;
+};
+
+export async function uploadProductImageAction(
+  _prevState: UploadImageState,
+  formData: FormData
+): Promise<UploadImageState> {
+  await requireAdminSession();
+
+  const file = formData.get("file");
+  if (!(file instanceof File) || file.size === 0) {
+    return { error: "Please choose an image to upload." };
+  }
+
+  try {
+    const { url } = await uploadProductImage(file);
+    return { url };
+  } catch (error) {
+    return { error: error instanceof Error ? error.message : "Upload failed. Please try again." };
+  }
+}
 
 export type ProductFormState = {
   error?: string;
@@ -38,7 +63,7 @@ function parseFormData(formData: FormData) {
     description: formData.get("description") ?? "",
     price: formData.get("price") ?? "",
     priceLabel: formData.get("priceLabel") ?? "",
-    currency: formData.get("currency") || "INR",
+    currency: formData.get("currency") || "GBP",
     material: formData.get("material") ?? "",
     finish: formData.get("finish") ?? "",
     color: formData.get("color") ?? "",
