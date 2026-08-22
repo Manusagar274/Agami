@@ -57,8 +57,8 @@ export default function ContactPage() {
 
         <div className="relative aspect-[4/5] w-full overflow-hidden hidden lg:block">
           <Image
-            src="/images/placeholders/contact-cover.svg"
-            alt="Gift-wrapped Agami jewellery box with gold ribbon"
+            src="/images/photos/contact-cover.webp"
+            alt="Agami by Haritha jewellery photograph"
             fill
             sizes="50vw"
             className="object-cover"

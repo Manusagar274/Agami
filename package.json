@@ -5,14 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "vercel-build": "drizzle-kit migrate && ( [ \"$RUN_SEED\" = \"true\" ] && tsx scripts/seed.ts || true ) && next build",
+    "vercel-build": "drizzle-kit migrate && ( [ \"$RUN_SEED\" = \"true\" ] && tsx scripts/seed.ts || true ) && ( [ \"$RUN_IMAGE_UPDATE\" = \"true\" ] && tsx scripts/update-product-images.ts || true ) && next build",
     "start": "next start",
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx --env-file=.env.local scripts/seed.ts",
-    "placeholders:generate": "node scripts/generate-placeholders.mjs"
+    "db:update-images": "tsx --env-file=.env.local scripts/update-product-images.ts",
+    "photos:process": "bash scripts/process-photos.sh"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",

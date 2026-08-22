@@ -10,7 +10,7 @@ export const siteConfig = {
   description: "Handpicked fancy jewellery for the modern Indian woman.",
   brandStatement: "Jewellery for moments that matter.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://agamibyharitha.com",
-  ogImage: "/images/og-default.svg",
+  ogImage: "/images/og-default.jpg",
 
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com/agamibyharitha",

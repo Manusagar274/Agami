@@ -19,7 +19,7 @@ const CATEGORY_SEED = [
   { slug: "other", name: "Other", sortOrder: 6 },
 ] as const;
 
-const PLACEHOLDER = (name: string) => `/images/placeholders/${name}.svg`;
+export const PHOTO = (name: string) => `/images/photos/${name}.webp`;
 
 type SeedProduct = {
   sku: string;
@@ -40,7 +40,7 @@ type SeedProduct = {
   images: string[];
 };
 
-const PRODUCTS: SeedProduct[] = [
+export const PRODUCTS: SeedProduct[] = [
   {
     sku: "AG-ER-001",
     slug: "kundan-jhumka-earrings",
@@ -58,7 +58,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Festive, Wedding",
     availability: "in_stock",
     featured: true,
-    images: ["product-earrings-1", "product-earrings-2"],
+    images: ["product-ag-er-001-1", "product-ag-er-001-2"],
   },
   {
     sku: "AG-ER-002",
@@ -77,7 +77,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Party, Evening Wear",
     availability: "in_stock",
     featured: false,
-    images: ["product-earrings-2", "product-earrings-1"],
+    images: ["product-ag-er-002-1"],
   },
   {
     sku: "AG-ER-003",
@@ -96,7 +96,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Festive, Sangeet",
     availability: "made_to_order",
     featured: false,
-    images: ["product-earrings-1"],
+    images: ["product-ag-er-003-1"],
   },
   {
     sku: "AG-NK-001",
@@ -115,7 +115,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Wedding, Festive",
     availability: "in_stock",
     featured: true,
-    images: ["product-necklace-1", "product-necklace-2"],
+    images: ["product-ag-nk-001-1", "product-ag-nk-001-2"],
   },
   {
     sku: "AG-NK-002",
@@ -134,7 +134,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Festive, Daily Wear",
     availability: "in_stock",
     featured: false,
-    images: ["product-necklace-2", "product-necklace-1"],
+    images: ["product-ag-nk-002-1"],
   },
   {
     sku: "AG-NK-003",
@@ -153,7 +153,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Daily Wear, Office",
     availability: "made_to_order",
     featured: false,
-    images: ["product-necklace-1"],
+    images: ["product-ag-nk-003-1"],
   },
   {
     sku: "AG-BG-001",
@@ -172,7 +172,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Festive, Wedding",
     availability: "in_stock",
     featured: true,
-    images: ["product-bangles-1", "product-bangles-2"],
+    images: ["product-ag-bg-001-1"],
   },
   {
     sku: "AG-BG-002",
@@ -191,7 +191,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Festive",
     availability: "in_stock",
     featured: false,
-    images: ["product-bangles-2", "product-bangles-1"],
+    images: ["product-ag-bg-002-1"],
   },
   {
     sku: "AG-RG-001",
@@ -210,7 +210,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Party, Festive",
     availability: "in_stock",
     featured: false,
-    images: ["product-ring-1", "product-ring-2"],
+    images: ["product-ag-rg-001-1"],
   },
   {
     sku: "AG-ST-001",
@@ -229,7 +229,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Wedding, Bridal",
     availability: "made_to_order",
     featured: true,
-    images: ["product-set-1", "product-set-2"],
+    images: ["product-ag-st-001-1"],
   },
   {
     sku: "AG-ST-002",
@@ -248,7 +248,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Reception, Festive",
     availability: "in_stock",
     featured: false,
-    images: ["product-set-2", "product-set-1"],
+    images: ["product-ag-st-002-1"],
   },
   {
     sku: "AG-OT-001",
@@ -267,7 +267,7 @@ const PRODUCTS: SeedProduct[] = [
     occasion: "Festive, Wedding",
     availability: "in_stock",
     featured: false,
-    images: ["product-other-1", "product-other-2"],
+    images: ["product-ag-ot-001-1"],
   },
 ];
 
@@ -329,8 +329,8 @@ async function main() {
     await db.insert(productImages).values(
       product.images.map((image, imgIndex) => ({
         productId: id,
-        imageUrl: PLACEHOLDER(image),
-        altText: `${product.name} — sample placeholder photograph`,
+        imageUrl: PHOTO(image),
+        altText: product.name,
         sortOrder: imgIndex,
         isPrimary: imgIndex === 0,
       }))
@@ -341,9 +341,13 @@ async function main() {
   console.log("Done.");
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+const isMainModule = process.argv[1] && import.meta.url === `file://${process.argv[1]}`;
+
+if (isMainModule) {
+  main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+      console.error(error);
+      process.exit(1);
+    });
+}

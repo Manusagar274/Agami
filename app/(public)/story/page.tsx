@@ -18,8 +18,8 @@ export default function StoryPage() {
     <div>
       <section className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-olive">
         <Image
-          src="/images/placeholders/story-cover.svg"
-          alt="Haritha at her workbench, sketching a new jewellery design"
+          src="/images/photos/story-cover.webp"
+          alt="Agami by Haritha jewellery photograph"
           fill
           priority
           sizes="100vw"
@@ -40,8 +40,8 @@ export default function StoryPage() {
         <StorySection
           kicker="The Beginning"
           title="A Love for Jewellery, Passed Down"
-          imageSrc="/images/placeholders/story-craft.svg"
-          imageAlt="Close-up of hands setting Kundan stones onto a jewellery piece"
+          imageSrc="/images/photos/story-craft.webp"
+          imageAlt="Agami by Haritha jewellery photograph"
         >
           <p>
             Agami by Haritha began with a simple idea: that fancy jewellery should feel personal,
@@ -62,8 +62,8 @@ export default function StoryPage() {
         <StorySection
           kicker="Craftsmanship"
           title="Where Tradition Meets the Everyday"
-          imageSrc="/images/placeholders/story-inspiration.svg"
-          imageAlt="Mood board of traditional Indian motifs and fabric swatches"
+          imageSrc="/images/photos/story-inspiration.webp"
+          imageAlt="Agami by Haritha jewellery photograph"
           imagePosition="right"
         >
           <p>

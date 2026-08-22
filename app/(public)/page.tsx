@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 const categoryTiles = [
-  { slug: "earrings", label: "Earrings", image: "/images/placeholders/category-earrings.svg" },
-  { slug: "necklaces", label: "Necklaces", image: "/images/placeholders/category-necklaces.svg" },
-  { slug: "bangles", label: "Bangles", image: "/images/placeholders/category-bangles.svg" },
-  { slug: "sets", label: "Sets", image: "/images/placeholders/category-sets.svg" },
+  { slug: "earrings", label: "Earrings", image: "/images/photos/category-earrings.webp" },
+  { slug: "necklaces", label: "Necklaces", image: "/images/photos/category-necklaces.webp" },
+  { slug: "bangles", label: "Bangles", image: "/images/photos/category-bangles.webp" },
+  { slug: "sets", label: "Sets", image: "/images/photos/category-sets.webp" },
 ];
 
 export default async function HomePage() {
@@ -57,8 +57,8 @@ export default async function HomePage() {
 
           <div className="relative order-1 lg:order-2 aspect-[4/5] w-full overflow-hidden">
             <Image
-              src="/images/placeholders/hero-woman-jewellery.svg"
-              alt="Woman wearing Agami by Haritha gold jewellery, editorial portrait"
+              src="/images/photos/hero.webp"
+              alt="Agami by Haritha jewellery, editorial photograph"
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
