@@ -161,19 +161,22 @@ Vercel, push/redeploy once, then remove the variable.
 
 ## Image hosting
 
-Product images are always stored as **URLs** in Postgres, never as binary data. `lib/storage/index.ts`
-is the single abstraction point for turning an upload into a URL:
+Product images are always stored as **URLs** in Postgres, never as binary data.
 
-- **Default**: the admin product form uploads directly to **Vercel Blob** (via
-  `uploadProductImageAction` → `uploadProductImage()` in `lib/storage/index.ts`) — set
-  `BLOB_READ_WRITE_TOKEN` (auto-added if you create a Blob store from the Vercel dashboard's
-  Storage tab, or run `vercel blob create-store <name> --access public`). Each image slot also
-  has a "paste an image URL" fallback for anything already hosted elsewhere.
-- **Cloudinary / S3**: implement the same `uploadProductImage(file): Promise<{ url }>` contract in
-  `lib/storage/index.ts` — nothing else in the app needs to change.
-- If you swap in a different provider/CDN, add its hostname to `images.remotePatterns` in
-  `next.config.ts` so `next/image` can optimize it on the public site (product cards, gallery,
-  detail pages).
+- **Default**: the admin product form (`components/admin/ImageUploadField.tsx`) uploads files
+  **directly from the browser to Vercel Blob** — the file bytes never pass through our own
+  server. `app/api/admin/upload/route.ts` only issues a short-lived signed token (after checking
+  the admin session) via `@vercel/blob/client`'s `handleUpload`; the actual upload then happens
+  browser → Blob. This matters: routing the file through a Server Action or API route instead
+  would hit Next's 1MB default body limit and Vercel's ~4.5MB serverless function payload ceiling
+  — real camera photos blow past both. Set `BLOB_READ_WRITE_TOKEN` to enable it (auto-added if
+  you create a Blob store from the Vercel dashboard's Storage tab, or run
+  `vercel blob create-store <name> --access public`). Each image slot also has a "paste an image
+  URL" fallback for anything already hosted elsewhere.
+- **Cloudinary / S3 / other providers**: most offer an equivalent signed-upload-from-the-browser
+  flow — swap the route handler and `ImageUploadField` to use that provider's client SDK instead.
+- Add any new image host's hostname to `images.remotePatterns` in `next.config.ts` so
+  `next/image` can optimize it on the public site (product cards, gallery, detail pages).
 
 ## WhatsApp enquiries
 
