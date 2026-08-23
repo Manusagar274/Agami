@@ -56,7 +56,7 @@ export default function StoryPage() {
         >
           <p>
             Agami by Haritha is a UK-based brand offering authentic South Indian traditional
-            ornaments — from temple jewellery to timeless everyday pieces, all inspired by designs
+            ornaments, from temple jewellery to timeless everyday pieces, all inspired by designs
             passed down through generations.
           </p>
         </StorySection>
@@ -86,7 +86,7 @@ export default function StoryPage() {
           <SectionHeading
             kicker="More Than a Business"
             title="A Bridge Between Heritage and Today"
-            description="For Haritha, this isn&rsquo;t just a business — it&rsquo;s a bridge between heritage and today. And if you&rsquo;re ever unsure what to pick, she&rsquo;s always happy to help."
+            description="For Haritha, this isn&rsquo;t just a business. It&rsquo;s a bridge between heritage and today. And if you&rsquo;re ever unsure what to pick, she&rsquo;s always happy to help."
           />
           <Button href="/collection" variant="primary" size="lg">
             Explore the Collection

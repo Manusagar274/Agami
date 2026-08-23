@@ -67,7 +67,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "earrings",
     shortDescription: "Elegant emerald-tone drops for evening wear.",
     description:
-      "Emerald-hued stone drops set in a warm gold finish, designed to catch the light with every movement — a graceful choice for evening occasions.",
+      "Emerald-hued stone drops set in a warm gold finish, designed to catch the light with every movement, a graceful choice for evening occasions.",
     price: 18,
     priceLabel: null,
     material: "Alloy, Glass Stones",
@@ -86,7 +86,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "earrings",
     shortDescription: "Bold floral motifs for a modern festive look.",
     description:
-      "Oversized floral-motif earrings that bring a contemporary edge to traditional design — a statement piece for those who love to stand out.",
+      "Oversized floral-motif earrings that bring a contemporary edge to traditional design, a statement piece for those who love to stand out.",
     price: null,
     priceLabel: "Enquire for Price",
     material: "Alloy, Kundan",
@@ -105,7 +105,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "necklaces",
     shortDescription: "Classic temple-motif necklace for bridal styling.",
     description:
-      "Inspired by South Indian temple architecture, this necklace layers intricate goddess motifs with a rich antique gold finish — perfect for bridal and festive wear.",
+      "Inspired by South Indian temple architecture, this necklace layers intricate goddess motifs with a rich antique gold finish, perfect for bridal and festive wear.",
     price: 40,
     priceLabel: null,
     material: "Alloy, Kundan",
@@ -124,7 +124,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "necklaces",
     shortDescription: "Delicate pearl choker for understated elegance.",
     description:
-      "A dainty pearl choker that layers beautifully with sarees and lehengas alike — understated, versatile, and effortlessly elegant.",
+      "A dainty pearl choker that layers beautifully with sarees and lehengas alike: understated, versatile, and effortlessly elegant.",
     price: 16,
     priceLabel: null,
     material: "Shell Pearls, Alloy",
@@ -143,7 +143,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "necklaces",
     shortDescription: "Versatile gold-finish necklace for daily elegance.",
     description:
-      "A lightweight, gold-finish necklace designed for everyday wear — subtle enough for the office, festive enough for celebrations.",
+      "A lightweight, gold-finish necklace designed for everyday wear, subtle enough for the office and festive enough for celebrations.",
     price: null,
     priceLabel: "Enquire for Price",
     material: "Alloy",
@@ -162,7 +162,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "bangles",
     shortDescription: "Set of antique-finish bangles with etched detailing.",
     description:
-      "A set of antique-finish bangles featuring etched traditional detailing — designed to be stacked or worn individually.",
+      "A set of antique-finish bangles featuring etched traditional detailing, designed to be stacked or worn individually.",
     price: 20,
     priceLabel: null,
     material: "Alloy",
@@ -181,7 +181,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "bangles",
     shortDescription: "Colourful enamel-work bangles inspired by Rajasthan.",
     description:
-      "Vivid enamel (meenakari) work bangles inspired by Rajasthani craftsmanship — a pop of colour for festive dressing.",
+      "Vivid enamel (meenakari) work bangles inspired by Rajasthani craftsmanship, a pop of colour for festive dressing.",
     price: 19,
     priceLabel: null,
     material: "Alloy, Enamel",
@@ -200,7 +200,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "rings",
     shortDescription: "Statement Kundan cocktail ring with adjustable band.",
     description:
-      "An eye-catching Kundan cocktail ring on an adjustable band — designed to be the finishing touch on a festive outfit.",
+      "An eye-catching Kundan cocktail ring on an adjustable band, designed to be the finishing touch on a festive outfit.",
     price: 14,
     priceLabel: null,
     material: "Kundan, Alloy",
@@ -217,9 +217,9 @@ export const PRODUCTS: SeedProduct[] = [
     slug: "bridal-jewellery-set",
     name: "Bridal Jewellery Set",
     category: "sets",
-    shortDescription: "Complete bridal set — necklace, earrings and maang tikka.",
+    shortDescription: "Complete bridal set: necklace, earrings and maang tikka.",
     description:
-      "A complete bridal jewellery set pairing a statement necklace, matching jhumka earrings and a maang tikka — designed for the bride who wants it all coordinated.",
+      "A complete bridal jewellery set pairing a statement necklace, matching jhumka earrings and a maang tikka, designed for the bride who wants it all coordinated.",
     price: null,
     priceLabel: "Enquire for Price",
     material: "Kundan, Alloy",
@@ -238,7 +238,7 @@ export const PRODUCTS: SeedProduct[] = [
     category: "sets",
     shortDescription: "Polki-inspired choker set with matching earrings.",
     description:
-      "A Polki-inspired choker and earring set with a raw, uncut-diamond look — a refined choice for receptions and festive evenings.",
+      "A Polki-inspired choker and earring set with a raw, uncut-diamond look, a refined choice for receptions and festive evenings.",
     price: 36,
     priceLabel: null,
     material: "Polki-style Stones, Alloy",

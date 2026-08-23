@@ -1,15 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Copy, Pencil, Star, Trash2 } from "lucide-react";
+import { Copy, Pencil, Star } from "lucide-react";
 import { cn, formatPrice } from "@/lib/utils";
 import { CATEGORY_LABEL, type Product } from "@/types/product";
 import {
-  deleteProductAction,
   duplicateProductAction,
   toggleFeaturedAction,
   toggleStatusAction,
 } from "@/lib/products/actions";
-import { ConfirmSubmitButton } from "./ConfirmSubmitButton";
+import { DeleteProductButton } from "./DeleteProductButton";
 
 export function ProductsTable({ products }: { products: Product[] }) {
   if (products.length === 0) {
@@ -101,15 +100,7 @@ export function ProductsTable({ products }: { products: Product[] }) {
                         <Copy className="h-4 w-4" />
                       </button>
                     </form>
-                    <form action={deleteProductAction.bind(null, product.id)}>
-                      <ConfirmSubmitButton
-                        confirmMessage={`Delete "${product.name}"? This cannot be undone.`}
-                        aria-label="Delete product"
-                        className="text-brown/60 hover:text-terracotta"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </ConfirmSubmitButton>
-                    </form>
+                    <DeleteProductButton id={product.id} name={product.name} />
                   </div>
                 </td>
               </tr>

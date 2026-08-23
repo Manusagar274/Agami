@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 
 const title = "Collection";
 const description =
-  "Browse the full Agami by Haritha catalogue of fancy jewellery — earrings, necklaces, bangles, rings and sets.";
+  "Browse the full Agami by Haritha catalogue of fancy jewellery: earrings, necklaces, bangles, rings and sets.";
 
 export const metadata: Metadata = {
   title,
@@ -51,7 +51,7 @@ export default async function CollectionPage({ searchParams }: CollectionPagePro
         align="left"
         kicker="The Catalogue"
         title={category ? CATEGORY_LABEL[category] : "Full Collection"}
-        description="Every piece is available to enquire about directly on WhatsApp — no checkout, no waiting."
+        description="Every piece is available to enquire about directly on WhatsApp. No checkout, no waiting."
         className="mt-6 mb-10"
       />
 

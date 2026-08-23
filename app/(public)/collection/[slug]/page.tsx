@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return { title: "Product Not Found" };
 
   const description =
-    product.shortDescription || product.description || `${product.name} — ${CATEGORY_LABEL[product.category]} from Agami by Haritha.`;
+    product.shortDescription || product.description || `${product.name}, ${CATEGORY_LABEL[product.category]} from Agami by Haritha.`;
   const image = product.images[0]?.imageUrl;
 
   return {

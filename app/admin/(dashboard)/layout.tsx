@@ -1,5 +1,6 @@
 import { requireAdminSession } from "@/lib/auth/guard";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { ToastHost } from "@/components/admin/ToastHost";
 
 export default async function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   const session = await requireAdminSession();
@@ -10,6 +11,7 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
       <main className="flex-1 px-6 sm:px-10 py-10 overflow-x-hidden">
         <div className="mx-auto max-w-6xl">{children}</div>
       </main>
+      <ToastHost />
     </div>
   );
 }

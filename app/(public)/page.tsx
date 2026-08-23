@@ -90,7 +90,7 @@ export default async function HomePage() {
           <SectionHeading
             kicker="Our Philosophy"
             title="Jewellery Rooted in Heritage"
-            description="Agami by Haritha brings together the artistry of traditional Indian jewellery-making with a contemporary sense of ease. Each piece is chosen to feel personal — the kind of jewellery that moves effortlessly between a festive evening and an ordinary Tuesday made a little more special."
+            description="Agami by Haritha brings together the artistry of traditional Indian jewellery-making with a contemporary sense of ease. Each piece is chosen to feel personal: the kind of jewellery that moves effortlessly between a festive evening and an ordinary Tuesday made a little more special."
           />
           <Link href="/story" className="font-sans text-sm uppercase tracking-wide text-terracotta hover:text-olive underline underline-offset-4">
             Read Our Story
@@ -149,7 +149,7 @@ export default async function HomePage() {
           </h2>
           <GoldDivider className="w-40" />
           <p className="font-serif text-ivory/75 leading-relaxed max-w-xl">
-            From the first sketch to the final polish, our collections are chosen with care —
+            From the first sketch to the final polish, our collections are chosen with care,
             honouring the techniques of Indian jewellery-making while staying true to how
             women actually want to wear their jewellery today.
           </p>
@@ -165,7 +165,7 @@ export default async function HomePage() {
           <SectionHeading
             kicker="Have a Question?"
             title="Let's Talk on WhatsApp"
-            description="Whether you're curious about a piece, need styling advice, or want to check availability — we're just a message away."
+            description="Whether you're curious about a piece, need styling advice, or want to check availability, we're just a message away."
           />
           <EnquiryButton size="lg" />
         </div>

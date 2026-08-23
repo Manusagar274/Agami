@@ -11,7 +11,7 @@ const links = [
 
 export function AdminSidebar({ email }: { email: string }) {
   return (
-    <aside className="flex h-full w-64 shrink-0 flex-col bg-olive text-ivory">
+    <aside className="sticky top-0 flex h-screen w-64 shrink-0 flex-col overflow-y-auto bg-olive text-ivory">
       <div className="px-6 py-6 border-b border-ivory/10">
         <Image
           src="/brand/agami-lockup-dark.webp"

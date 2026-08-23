@@ -97,10 +97,10 @@ export async function createProductAction(
   }
 
   try {
-    const id = await createProduct(toProductInput(parsed.data));
+    await createProduct(toProductInput(parsed.data));
     revalidatePath("/admin/products");
     revalidatePath("/collection");
-    redirect(`/admin/products/${id}`);
+    redirect(`/admin/products?created=${encodeURIComponent(parsed.data.name)}`);
   } catch (error) {
     if (error instanceof Error && error.message.includes("duplicate key")) {
       return { error: "That SKU or slug is already in use. Please choose another." };

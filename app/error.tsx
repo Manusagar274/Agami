@@ -12,7 +12,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
       <body className="flex min-h-screen flex-col items-center justify-center gap-6 bg-[#F3EDE2] px-4 text-center font-sans">
         <h1 className="text-3xl text-[#292A1F]">Something went wrong.</h1>
         <p className="text-[#3B332B]/70 max-w-md">
-          We&rsquo;re sorry — please try again in a moment. If the problem continues, reach out to us on WhatsApp.
+          We&rsquo;re sorry. Please try again in a moment. If the problem continues, reach out to us on WhatsApp.
         </p>
         <button
           onClick={reset}

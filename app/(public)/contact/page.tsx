@@ -34,7 +34,7 @@ export default function ContactPage() {
             align="left"
             kicker="We'd Love to Hear From You"
             title="Get in Touch"
-            description="The quickest way to reach us is on WhatsApp — send us a message about any piece, a custom request, or just to say hello."
+            description="The quickest way to reach us is on WhatsApp: send us a message about any piece, a custom request, or just to say hello."
           />
 
           <div className="flex flex-col gap-4 mt-2">
@@ -58,7 +58,7 @@ export default function ContactPage() {
             <p className="font-sans text-xs tracking-[0.2em] uppercase text-terracotta mb-2">Enquiry Guidance</p>
             <p>
               When enquiring about a piece, mention the product name and code (visible on each product
-              page) — it helps us confirm availability and pricing faster. For custom requests, let us
+              page). It helps us confirm availability and pricing faster. For custom requests, let us
               know the occasion, preferred colours, and your timeline.
             </p>
           </div>
