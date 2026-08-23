@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "vercel-build": "drizzle-kit migrate && ( [ \"$RUN_SEED\" = \"true\" ] && tsx scripts/seed.ts || true ) && ( [ \"$RUN_IMAGE_UPDATE\" = \"true\" ] && tsx scripts/update-product-images.ts || true ) && ( [ \"$RUN_CURRENCY_UPDATE\" = \"true\" ] && tsx scripts/update-currency.ts || true ) && ( [ \"$RUN_DESCRIPTION_UPDATE\" = \"true\" ] && tsx scripts/update-descriptions.ts || true ) && next build",
+    "vercel-build": "drizzle-kit migrate && ( [ \"$RUN_SEED\" = \"true\" ] && tsx scripts/seed.ts || true ) && ( [ \"$RUN_IMAGE_UPDATE\" = \"true\" ] && tsx scripts/update-product-images.ts || true ) && ( [ \"$RUN_CURRENCY_UPDATE\" = \"true\" ] && tsx scripts/update-currency.ts || true ) && ( [ \"$RUN_DESCRIPTION_UPDATE\" = \"true\" ] && tsx scripts/update-descriptions.ts || true ) && ( [ \"$RUN_CLEANUP\" = \"true\" ] && tsx scripts/cleanup-test-data.ts || true ) && next build",
     "start": "next start",
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
@@ -15,6 +15,7 @@
     "db:update-images": "tsx --env-file=.env.local scripts/update-product-images.ts",
     "db:update-currency": "tsx --env-file=.env.local scripts/update-currency.ts",
     "db:update-descriptions": "tsx --env-file=.env.local scripts/update-descriptions.ts",
+    "db:cleanup-test-data": "tsx --env-file=.env.local scripts/cleanup-test-data.ts",
     "photos:process": "bash scripts/process-photos.sh"
   },
   "dependencies": {
