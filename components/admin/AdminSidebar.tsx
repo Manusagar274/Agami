@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LayoutDashboard, Package, PlusCircle, LogOut, ExternalLink } from "lucide-react";
-import { Logo } from "@/components/brand/Logo";
 import { logoutAction } from "@/lib/auth/actions";
 
 const links = [
@@ -13,7 +13,13 @@ export function AdminSidebar({ email }: { email: string }) {
   return (
     <aside className="flex h-full w-64 shrink-0 flex-col bg-olive text-ivory">
       <div className="px-6 py-6 border-b border-ivory/10">
-        <Logo tone="ivory" size="sm" />
+        <Image
+          src="/brand/agami-lockup-dark.webp"
+          alt="Agami by Haritha"
+          width={1324}
+          height={1189}
+          className="h-16 w-16"
+        />
       </div>
 
       <nav aria-label="Admin" className="flex-1 px-3 py-6 flex flex-col gap-1 font-sans text-sm">

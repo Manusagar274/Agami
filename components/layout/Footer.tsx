@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { InstagramIcon } from "@/components/ui/icons";
-import { Logo } from "@/components/brand/Logo";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 import { siteConfig } from "@/lib/config/site";
 import { generateGeneralEnquiryUrl } from "@/lib/whatsapp";
@@ -13,7 +13,13 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="flex flex-col gap-4">
-            <Logo tone="ivory" />
+            <Image
+              src="/brand/agami-lockup-dark.webp"
+              alt="Agami by Haritha"
+              width={1324}
+              height={1189}
+              className="h-24 w-24"
+            />
             <p className="font-serif text-sm text-ivory/75 max-w-xs leading-relaxed">
               {siteConfig.brandStatement}
             </p>

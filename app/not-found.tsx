@@ -1,10 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Logo } from "@/components/brand/Logo";
 
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-ivory px-4 text-center">
-      <Logo size="lg" />
+      <Image
+        src="/brand/agami-lockup-light.webp"
+        alt="Agami by Haritha"
+        width={1324}
+        height={1189}
+        className="h-24 w-24"
+      />
       <h1 className="font-display text-4xl text-olive">Page Not Found</h1>
       <p className="font-serif text-brown/70 max-w-md">
         The page you&rsquo;re looking for doesn&rsquo;t exist.
