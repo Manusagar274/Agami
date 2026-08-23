@@ -41,7 +41,7 @@ export default function ContactPage() {
             <EnquiryButton size="lg" className="self-start" />
 
             <div className="flex flex-col gap-3 pt-4">
-              <ContactRow icon={MessageCircle} label="WhatsApp" value="Available during business hours, IST" />
+              <ContactRow icon={MessageCircle} label="WhatsApp" value="Available during business hours, UK time" />
               <ContactRow
                 icon={InstagramIcon}
                 label="Instagram"

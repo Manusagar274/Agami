@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/config/site";
 
 const title = "Our Story";
 const description =
-  "The story behind Agami by Haritha — Indian craftsmanship, personal style, and jewellery made to be worn and loved.";
+  "Agami by Haritha is a UK-based brand offering authentic South Indian traditional ornaments, inspired by designs passed down through generations.";
 
 export const metadata: Metadata = {
   title,
@@ -49,53 +49,44 @@ export default function StoryPage() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col gap-20 sm:gap-28 py-12">
         <StorySection
-          kicker="The Beginning"
-          title="A Love for Jewellery, Passed Down"
+          kicker="Who We Are"
+          title="Rooted in South Indian Tradition"
           imageSrc="/images/photos/story-craft.webp"
           imageAlt="Agami by Haritha jewellery photograph"
         >
           <p>
-            Agami by Haritha began with a simple idea: that fancy jewellery should feel personal,
-            not mass-produced. <em>[Placeholder — replace with Haritha&rsquo;s real story: how she
-            first fell in love with jewellery, and what led her to start Agami.]</em>
-          </p>
-          <p>
-            Growing up surrounded by the rituals of Indian festivities — the clink of bangles, the
-            careful pinning of a maang tikka before a wedding — jewellery was never just an
-            accessory. It was memory, celebration, and identity, worn together.
+            Agami by Haritha is a UK-based brand offering authentic South Indian traditional
+            ornaments — from temple jewellery to timeless everyday pieces, all inspired by designs
+            passed down through generations.
           </p>
         </StorySection>
 
-        <PullQuote attribution="Haritha, Founder">
-          Jewellery should feel like it already belongs to you.
-        </PullQuote>
-
         <StorySection
-          kicker="Craftsmanship"
-          title="Where Tradition Meets the Everyday"
+          kicker="Meet Haritha"
+          title="The Woman Behind Agami"
           imageSrc="/images/photos/story-inspiration.webp"
           imageAlt="Agami by Haritha jewellery photograph"
           imagePosition="right"
         >
           <p>
-            Each collection draws from traditional techniques — Kundan work, temple motifs, antique
-            gold finishes — reinterpreted for the way modern Indian women actually get dressed.
-            <em> [Placeholder — replace with specific details about sourcing, design process, or
-            the artisans and workshops Agami collaborates with.]</em>
-          </p>
-          <p>
-            The goal has never been to chase trends, but to build a wardrobe of fancy jewellery
-            that moves easily from a wedding sangeet to a Tuesday that deserves a little sparkle.
+            Behind the brand is Haritha, who has always loved South Indian jewellery. Two things
+            fascinate her most: picturing who a piece would suit, and wondering about the skill
+            and patience behind making it. That&rsquo;s why every piece at Agami is chosen with
+            care, honouring tradition while fitting easily into everyday life.
           </p>
         </StorySection>
+
+        <PullQuote attribution="Haritha, Founder">
+          Styling you is her favourite part.
+        </PullQuote>
 
         <GoldDivider className="max-w-xs mx-auto" />
 
         <div className="flex flex-col items-center text-center gap-6 max-w-2xl mx-auto">
           <SectionHeading
-            kicker="Today"
-            title="Modern Styling, Timeless Roots"
-            description="Agami continues to grow, one collection at a time — always rooted in Indian craftsmanship, always designed for real, everyday women. [Placeholder — replace with current milestones, collaborations, or what's next for the brand.]"
+            kicker="More Than a Business"
+            title="A Bridge Between Heritage and Today"
+            description="For Haritha, this isn&rsquo;t just a business — it&rsquo;s a bridge between heritage and today. And if you&rsquo;re ever unsure what to pick, she&rsquo;s always happy to help."
           />
           <Button href="/collection" variant="primary" size="lg">
             Explore the Collection

@@ -15,7 +15,7 @@ export const siteConfig = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/agamiofficial/",
 
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@agamibyharitha.com",
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "agamiofficial01@gmail.com",
 
   nav: [
     { label: "Home", href: "/" },
