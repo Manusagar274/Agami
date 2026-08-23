@@ -63,7 +63,7 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 font-sans text-xs text-ivory/60">
           <p>
-            {siteConfig.name} &mdash; {siteConfig.brandStatement}
+            {siteConfig.name}: {siteConfig.brandStatement}
           </p>
           <p>&copy; {year} {siteConfig.name}. All rights reserved.</p>
         </div>
